@@ -1,0 +1,9 @@
+/node_modules/
+
+/src/images/
+
+*.db
+*.jpeg
+*.jpg
+*.png
+*.gif
