@@ -1,0 +1,34 @@
+html {
+  scroll-behavior: smooth; }
+
+.green {
+  color: #7cab8b; }
+
+.brown {
+  color: #a99393; }
+
+.big {
+  font-size: 2vw; }
+
+.small {
+  font-size: 1vw; }
+
+.tahoma {
+  font-family: Tahoma; }
+
+nav {
+  background: grey;
+  display: flex; }
+  nav li {
+    flex-grow: 1;
+    list-style-type: none; }
+    nav li a {
+      text-decoration: none;
+      font-family: Tahoma;
+      font-size: 2.2 vw;
+      color: turquoise;
+      padding: 1vw;
+      margin: 1vw; }
+      nav li a:hover {
+        color: #aef2eb; }
+
