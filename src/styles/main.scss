@@ -1,3 +1,33 @@
+ul > li {
+  a:hover {
+    text-decoration: none !important;
+  }
+}
+
+.bouncer-enter {
+  animation: 1s bounceIn ease-in;
+}
+
+.bouncer-enter-active {
+
+}
+
+.bouncer-exit {
+  animation: 1s bounceOut ease-in;
+}
+
+.bouncer-exit-active {
+
+}
+
+li {
+  list-style-type: none;
+}
+
+.strike {
+  text-decoration: line-through !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -28,7 +58,6 @@ nav {
 
   li {
     flex-grow: 1;
-    list-style-type: none;
 
     a {
       text-decoration: none;

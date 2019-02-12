@@ -1,48 +1,65 @@
 import React from 'react';
 import { photoData } from './photoData';
+import { buttonData as allButtons, uniqueClasses } from './buttonData';
 
-export class PhotoGallery extends React.Component{
+export class PhotoGallery extends React.Component {
 
   constructor(props) {
   super(props);
   this.state = {shownPhotos: photoData};
+  //
+  // showBrasil() { this.setState({shownPhotos: photoData.filter(photo => photo.category === 'Brasil')}) }
+  // showFruits() { this.setState({shownPhotos: photoData.filter(photo => photo.category === 'Fruit')}) }
+  // showAustria() { this.setState({shownPhotos: photoData.filter(photo => photo.category === 'Austria')}) }
+  // showAll() { this.setState({shownPhotos: photoData});
+}
+
+  filterBy (group) {
+    if (group === 'All') {
+      this.setState({shownPhotos : photoData});
+    } else {
+      this.setState({shownPhotos: photoData.filter(photo => photo.category === group)});
+    }
   }
 
-  showAll() {
-    this.setState({shownPhotos: photoData});
-  }
-
-  showBrasil() {
-    this.setState({shownPhotos: photoData.filter(photo => photo.category === 'Brasil')})
-  }
-
-  showFruits() {
-    this.setState({shownPhotos: photoData.filter(photo => photo.category === 'Fruit')})
-  }
-
-  showAustria() {
-    this.setState({shownPhotos: photoData.filter(photo => photo.category === 'Austria')})
+  filterImages (ev) {
+    const targetElementIdentifier = ev.target.getAttribute('identifier'); // in case of click on fruits = fruits
+    this.filterBy(targetElementIdentifier); // fruits
   }
 
   render() {
 
     return (
-      <div className="container">
-        <button className="btn btn-lg btn-dark text-white" onClick={this.showAll.bind(this)}>Show All</button>
-        <button className="btn btn-lg btn-light" onClick={this.showBrasil.bind(this)}>Show Brasil</button>
-        <button className="btn btn-lg btn-dark text-white" onClick={this.showFruits.bind(this)}>Show Fruits</button>
-        <button className="btn btn-lg btn-light" onClick={this.showAustria.bind(this)}>Show Austria</button>
-
-        <div className="row">
-          {this.state.shownPhotos.map((photo, index) =>
-            <img
-              style={{height: '30vw'}}
-              src={photo.source}
-              key={index}
-              className="col-lg-4 col-md-8" />)}
-        </div>
-
-      </div>
+        <React.Fragment>
+          <div className="container">
+            {allButtons.map((button, index) =>
+              <button
+                key = {index}
+                identifier = {button.identifier}
+                className = {['btn', 'm-2', uniqueClasses[index]].join(' ')}
+                onClick = {this.filterImages.bind(this)} > {button.text}
+              </button>
+            )}
+          </div>
+          <RenderImages shownPhotos={this.state.shownPhotos} />
+        </React.Fragment>
     )
   }
 }
+
+// functional stateless component
+
+const RenderImages = props => {
+
+    return (
+      <div className="row">
+        {props.shownPhotos.map((photo, index) =>
+          <img
+            style = {{height: '30vw', width: '50vw', fontFamily: 'Tahoma'}}
+            src = {photo.source}
+            key = {index}
+            className="m-1 col-lg-4 col-md-5" /> )}
+      </div>
+
+    )
+  }
