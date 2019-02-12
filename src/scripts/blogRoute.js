@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, NavLink, Route} from 'react-router-dom';
 
-class BlogForm extends React.Component{
+export class BlogForm extends React.Component{
 
   render() {
     return (
@@ -39,37 +39,6 @@ class BlogForm extends React.Component{
           </div>
         </div>
       </>
-    )
-  }
-}
-
-export class BlogRoute extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <>
-          <div className="container mt-4">
-            <ul className="nav">
-              <li className="nav-item my-4 mr-3">
-                <NavLink to="/dist">Home</NavLink>
-              </li>
-              <li className="nav-item my-4 mr-3">
-                <NavLink to="/createPost">Create a Post</NavLink>
-              </li>
-              <li className="nav-item my-4 mr-3">
-                <NavLink to="/show">Show a Post</NavLink>
-              </li>
-            </ul>
-          </div>
-
-          <div className="container">
-            <div className="jumbotron">
-              <Route path="/dist" exact render={() => <h2 className="display-3 text-center">Welcome to our Blog site!</h2>} />
-              <Route path="/createPost" component= {BlogForm} />
-            </div>
-          </div>
-        </>
-      </BrowserRouter>
     )
   }
 }
